@@ -1,21 +1,26 @@
-int * ptr; //declaration of pointer for array
-int myArray[50]; //declaration of array as 50
-int n = 50; //int used as element counter in sort loop
-int temp = 0; //used to switch in loop
+/**
+ * Author : Paolo Espiritu
+ * Edited : 13/02/20
+ **/
+
+int * ptr;        //declaration of pointer for array
+int myArray[50];  //declaration of array as 50
+int n = 50;       //int used as element counter in sort loop
+int temp = 0;     //used to switch in loop
 
 int l1 = 13;
 int l2 = 12;
-int l3 = 11; //led no. 3
-int l4 = 10; //led no.4
-int l5 = 9; //led no.5
+int l3 = 11;  //led no.3
+int l4 = 10;  //led no.4
+int l5 = 9;   //led no.5
 int l6 = 8;
 int l7 = 7;
 int l8 = 6;
 
 int incomingByte; //variable for serial button
 
-String lowestBinArray[8]; //way tested to create LED outptut & translate lowest number in array to binary
-String highestBinArray[8]; //way tested to create LED outptut & translate highest number in array to binary
+String lowestBinArray[8];   // way tested to create LED outptut & translate lowest number in array to binary
+String highestBinArray[8];  // way tested to create LED outptut & translate highest number in array to binary
 //String lowestBinary;
 
 void setup() {
@@ -88,46 +93,8 @@ void loop() {
       }
 
     }
-          /*
-      Serial.print(bitRead(lowest, b));
-      bitRead(lowest, b);
-      Serial.print(lowestBinary.charAt(1));
-      lowestBinary = String(bitRead(lowest, b)); //conversion of int to a String
-      Serial.print(lowestBinary.charAt(b)); 
-      */
-    Serial.println();
 
-    /*
-  for (int i = 0; i < 8; i++)
-  {
-      if (lowestBinary = '1') lowestBinArray[i] = '1';
-      if (lowestBinary = '0') lowestBinArray[i] = '0';
-    }
-*/
-    /*
     Serial.println();
-      for(int i = 0; i < 8; i = i+1)
-      {
-      Serial.print(lowestBinArray[i]);
-      }
-      
-      Serial.println();
-    /*
-      for (int i = 1; i >= 0; i--)
-      {
-        Serial.print(lowestBinary.charAt(i));
-        }
-
-    //Serial.println();
-    //Serial.print(lowestBinary);
-  
-    /*
-    for (int i = 0; i < 1; i++)
-    {
-    char firstBin = lowestBinary.charAt(i);
-    Serial.print(firstBin);
-    }
-    */
     
     for (int b = 7; b >= 0; b--) { //loop used again to attempt to print the whole binary
       //Serial.print(bitRead(highest, c));
@@ -187,14 +154,11 @@ void loop() {
       digitalWrite(l8, HIGH); //turn on LED
     }
     delay(5000);
-    digitalWrite(l1, LOW); //all led's to turn off
-    digitalWrite(l2, LOW);
-    digitalWrite(l3, LOW);
-    digitalWrite(l4, LOW);
-    digitalWrite(l5, LOW);
-    digitalWrite(l6, LOW);
-    digitalWrite(l7, LOW);
-    digitalWrite(l8, LOW);
+
+    for(int i = 1; i <= 8; i++){
+      String led = 'l' + i;
+      digitalWrite(led, LOW);
+    }
 
     int i0 = bitRead(highest, 0); //conversion of binary of highest int (again starting from 8th position of binary) 
     if (i0 == 1) { //if variable == 1 
@@ -236,14 +200,10 @@ void loop() {
       digitalWrite(l8, HIGH); //turn on LED
     }
     delay(5000);
-    digitalWrite(l1, LOW); //turn of all LEDS
-    digitalWrite(l2, LOW);
-    digitalWrite(l3, LOW);
-    digitalWrite(l4, LOW);
-    digitalWrite(l5, LOW);
-    digitalWrite(l6, LOW);
-    digitalWrite(l7, LOW);
-    digitalWrite(l8, LOW);
-    //incomingByte=Serial.read(); //reads
+
+    for(int i = 1; i <= 8; i++){
+      String led = 'l' + i;
+      digitalWrite(led, LOW);
+    }
   }
 }
